@@ -1,10 +1,6 @@
 # Football Data
 
-This project is a Go application that fetches and processes football data.
-
-## Prerequisites
-
-Ensure you have Go installed on your machine. This project uses Go Modules for dependency management.
+Football Data command line tool. Getting data from API Football and publishing it to the Kafka.
 
 ## Environment Variables
 
@@ -21,13 +17,9 @@ The application requires the following environment variables:
 
 You can set these environment variables in a `.env` file in the root of the project. Use the provided `.env.dist` file as a template.
 
-## Build
+## Download binary
 
-To build the application, run the following command:
-
-```
-make football_data
-```
+Download the binary from releases https://github.com/fmo/football-data/releases
 
 ## Run
 
