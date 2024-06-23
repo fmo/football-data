@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"github.com/fmo/football-data/internal/leagues"
 	"strconv"
 )
 
@@ -33,7 +34,7 @@ func getActionId() int {
 
 func getLeagueId() int {
 	var leagueId int
-	leagues := getLeagues()
+	leagues := leagues.GetLeagues()
 	fmt.Println("Select a league")
 	fmt.Println("----------------")
 	for i, l := range leagues {

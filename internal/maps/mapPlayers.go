@@ -1,4 +1,4 @@
-package main
+package maps
 
 import (
 	"github.com/fmo/football-data/rapidapi"
@@ -19,7 +19,7 @@ type Player struct {
 	Position    string `json:"position"`
 }
 
-func mapPlayers(players []rapidapi.PlayerDetails, returnPlayer *[]Player) {
+func MapPlayers(players []rapidapi.PlayerDetails, returnPlayer *[]Player) {
 	for _, p := range players {
 		player := Player{
 			Name:        p.Player.Name,

@@ -1,4 +1,4 @@
-package main
+package maps
 
 import (
 	"github.com/fmo/football-data/rapidapi"

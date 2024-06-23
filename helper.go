@@ -11,21 +11,6 @@ import (
 	"os"
 )
 
-func getLeagues() map[string]int {
-	return map[string]int{
-		"turkish-super-league": 203,
-		"ucl":                  2,
-		"premier-league":       39,
-		"bundesliga":           78,
-		"la-liga":              140,
-		"serie-a":              135,
-		"uefa-conference":      848,
-		"uefa-europa-league":   3,
-		"euro-championship":    4,
-		"friendlies":           10,
-	}
-}
-
 func publish(data interface{}, topic string) {
 	mechanism, _ := scram.Mechanism(scram.SHA256, os.Getenv("KAFKA_USERNAME"), os.Getenv("KAFKA_PASSWORD"))
 	w := kafka.Writer{
