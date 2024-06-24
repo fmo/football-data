@@ -28,3 +28,19 @@ To run the application, first ensure that all environment variables are set, the
 ```
 ./footballDataApp
 ```
+
+## Leagues
+
+| League               | Id  |
+|----------------------|-----|
+| turkish-super-league | 203 |
+| ucl                  | 2   |
+| premier-league       | 39  |
+| bundesliga           | 78  |
+| la-liga              | 140 |
+| serie-a              | 135 |
+| uefa-conference      | 848 |
+| uefa-europa-league   | 3   |
+| euro-championship    | 4   |
+| friendlies           | 10  |
+

@@ -11,8 +11,7 @@ var StandingsCmd = &cobra.Command{
 	Use:   "standings",
 	Short: "Get standings",
 	Run: func(cmd *cobra.Command, args []string) {
-		leagueId := getLeagueId()
-		rapidStanding := rapidapi.GetStanding(leagueId)
+		rapidStanding := rapidapi.GetStanding(2)
 		standing := maps.MapStanding(rapidStanding)
 		for _, s := range standing {
 			fmt.Println(s.Name)

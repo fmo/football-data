@@ -11,8 +11,7 @@ var TeamsCmd = &cobra.Command{
 	Use:   "teams",
 	Short: "Get teams",
 	Run: func(cmd *cobra.Command, args []string) {
-		leagueId := getLeagueId()
-		rapidTeams := rapidapi.GetTeams(leagueId)
+		rapidTeams := rapidapi.GetTeams(2)
 		teams := maps.MapTeams(rapidTeams)
 		for _, team := range teams {
 			fmt.Println(team.Name)
