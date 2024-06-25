@@ -7,6 +7,7 @@ import (
 )
 
 var leagueId int
+var teamId int
 
 var GamesCmd = &cobra.Command{
 	Use:   "games",
@@ -14,7 +15,7 @@ var GamesCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		requestParams := map[string]int{}
 		requestParams["leagueId"] = leagueId
-		requestParams["teamId"] = 541
+		requestParams["teamId"] = teamId
 		requestParams["season"] = 2023
 		rapidApiGames := rapidapi.GetGames(requestParams)
 		maps.MapGames(rapidApiGames)
@@ -24,4 +25,5 @@ var GamesCmd = &cobra.Command{
 
 func init() {
 	GamesCmd.Flags().IntVarP(&leagueId, "leagueId", "l", 0, "League ID")
+	GamesCmd.Flags().IntVarP(&teamId, "teamId", "t", 541, "Team ID")
 }

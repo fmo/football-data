@@ -26,7 +26,7 @@ Download the binary from releases https://github.com/fmo/football-data/releases
 To run the application, first ensure that all environment variables are set, then execute the binary:
 
 ```
-./footballDataApp
+./footballDataApp games --leagueId 203 --teamId 611
 ```
 
 ## Leagues

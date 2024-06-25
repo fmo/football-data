@@ -11,10 +11,10 @@ var TeamsCmd = &cobra.Command{
 	Use:   "teams",
 	Short: "Get teams",
 	Run: func(cmd *cobra.Command, args []string) {
-		rapidTeams := rapidapi.GetTeams(2)
+		rapidTeams := rapidapi.GetTeams(203)
 		teams := maps.MapTeams(rapidTeams)
 		for _, team := range teams {
-			fmt.Println(team.Name)
+			fmt.Println(team.Id, team.Name)
 		}
 	},
 }
