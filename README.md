@@ -29,6 +29,22 @@ To run the application, first ensure that all environment variables are set, the
 ./footballDataApp games --leagueId 203 --teamId 611
 ```
 
+## Response
+
+```
+{
+    "awayTeam":"İstanbulspor",
+    "gameDate":"2024-05-26T16:00:00+00:00",
+    "homeTeam":"Fenerbahce",
+    "leagueName":"Süper Lig",
+    "level":"info",
+    "msg":"Game fetched!",
+    "round":"Regular Season - 38",
+    "score":"6-0",
+    "time":"2024-06-25T21:13:58+02:00"
+}
+```
+
 ## Leagues
 
 | League               | Id  |
