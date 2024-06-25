@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"github.com/fmo/football-data/cmd"
+	"github.com/fmo/football-data/cmd/games"
+	"github.com/fmo/football-data/cmd/teams"
 	"github.com/joho/godotenv"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
@@ -29,10 +31,10 @@ func main() {
 		Short: "Football Data CLI Application",
 	}
 
-	rootCmd.AddCommand(cmd.GamesCmd)
+	rootCmd.AddCommand(games.Cmd)
 	rootCmd.AddCommand(cmd.CountriesCmd)
 	rootCmd.AddCommand(cmd.LeaguesCmd)
-	rootCmd.AddCommand(cmd.TeamsCmd)
+	rootCmd.AddCommand(teams.Cmd)
 	rootCmd.AddCommand(cmd.PlayersCmd)
 	rootCmd.AddCommand(cmd.StandingsCmd)
 

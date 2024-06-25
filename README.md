@@ -60,3 +60,13 @@ To run the application, first ensure that all environment variables are set, the
 | euro-championship    | 4   |
 | friendlies           | 10  |
 
+
+## Teams
+
+| Team        | Id  |
+|-------------|-----|
+| Real Madrid | 541 |
+| Fenerbahce  | 611 |
+| Turkiye     | 777 |
+| Germany     | 25  |
+| England     | 10  |

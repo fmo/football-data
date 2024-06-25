@@ -20,8 +20,8 @@ type team struct {
 	Logo string `json:"logo"`
 }
 
-func GetTeams(leagueId int) []TeamsSpecs {
-	url := fmt.Sprintf("https://api-football-v1.p.rapidapi.com/v3/teams?league=%d&season=%d", leagueId, 2023)
+func GetTeams(leagueId int, season int) []TeamsSpecs {
+	url := fmt.Sprintf("https://api-football-v1.p.rapidapi.com/v3/teams?league=%d&season=%d", leagueId, season)
 
 	response := rapidRequest(url)
 
