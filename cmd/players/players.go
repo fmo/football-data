@@ -1,4 +1,4 @@
-package cmd
+package players
 
 import (
 	"fmt"
@@ -7,16 +7,19 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var PlayersCmd = &cobra.Command{
+var teamId int
+var season int
+
+var Cmd = &cobra.Command{
 	Use:   "players",
 	Short: "Get players",
 	Run: func(cmd *cobra.Command, args []string) {
 		var players []maps.Player
-		rapidPlayers := rapidapi.GetPlayers(0)
+		rapidPlayers := rapidapi.GetPlayers(0, season, teamId)
 		maps.MapPlayers(rapidPlayers.Response, &players)
 
 		for page := 1; page <= rapidPlayers.Paging.Total; page++ {
-			result := rapidapi.GetPlayers(page)
+			result := rapidapi.GetPlayers(page, season, teamId)
 
 			maps.MapPlayers(result.Response, &players)
 		}
@@ -25,4 +28,9 @@ var PlayersCmd = &cobra.Command{
 			fmt.Println(player.Name)
 		}
 	},
+}
+
+func init() {
+	Cmd.Flags().IntVarP(&teamId, "teamId", "t", 541, "Team Id")
+	Cmd.Flags().IntVarP(&season, "season", "s", 2023, "Season")
 }

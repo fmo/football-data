@@ -46,8 +46,13 @@ type Team struct {
 	ID   int    `json:"id"`
 }
 
-func GetPlayers(page int) PlayerResponse {
-	url := fmt.Sprintf("https://api-football-v1.p.rapidapi.com/v3/players?season=2023&team=541&page=%d", page)
+func GetPlayers(page int, season int, teamId int) PlayerResponse {
+	url := fmt.Sprintf(
+		"https://api-football-v1.p.rapidapi.com/v3/players?season=%d&team=%d&page=%d",
+		season,
+		teamId,
+		page,
+	)
 
 	response := rapidRequest(url)
 

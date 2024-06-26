@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/fmo/football-data/cmd"
 	"github.com/fmo/football-data/cmd/games"
+	"github.com/fmo/football-data/cmd/players"
 	"github.com/fmo/football-data/cmd/teams"
 	"github.com/joho/godotenv"
 	log "github.com/sirupsen/logrus"
@@ -35,7 +36,7 @@ func main() {
 	rootCmd.AddCommand(cmd.CountriesCmd)
 	rootCmd.AddCommand(cmd.LeaguesCmd)
 	rootCmd.AddCommand(teams.Cmd)
-	rootCmd.AddCommand(cmd.PlayersCmd)
+	rootCmd.AddCommand(players.Cmd)
 	rootCmd.AddCommand(cmd.StandingsCmd)
 
 	if err := rootCmd.Execute(); err != nil {
