@@ -1,4 +1,4 @@
-package cmd
+package standings
 
 import (
 	"fmt"
@@ -7,14 +7,22 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var StandingsCmd = &cobra.Command{
+var leagueId int
+var season int
+
+var Cmd = &cobra.Command{
 	Use:   "standings",
 	Short: "Get standings",
 	Run: func(cmd *cobra.Command, args []string) {
-		rapidStanding := rapidapi.GetStanding(2)
+		rapidStanding := rapidapi.GetStanding(leagueId, season)
 		standing := maps.MapStanding(rapidStanding)
 		for _, s := range standing {
 			fmt.Println(s.Name)
 		}
 	},
+}
+
+func init() {
+	Cmd.Flags().IntVarP(&leagueId, "leagueId", "l", 2, "League Id")
+	Cmd.Flags().IntVarP(&season, "season", "s", 2023, "Season")
 }

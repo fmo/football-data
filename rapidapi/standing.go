@@ -64,8 +64,8 @@ type StandingsResponse struct {
 	} `json:"response"`
 }
 
-func GetStanding(leagueId int) StandingsResponse {
-	url := fmt.Sprintf("https://api-football-v1.p.rapidapi.com/v3/standings?season=2023&league=%d", leagueId)
+func GetStanding(leagueId, season int) StandingsResponse {
+	url := fmt.Sprintf("https://api-football-v1.p.rapidapi.com/v3/standings?season=%d&league=%d", season, leagueId)
 
 	response := rapidRequest(url)
 
