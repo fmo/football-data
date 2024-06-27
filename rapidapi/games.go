@@ -3,7 +3,7 @@ package rapidapi
 import (
 	"encoding/json"
 	"fmt"
-	"log"
+	log "github.com/sirupsen/logrus"
 )
 
 type FixtureDetails struct {
@@ -61,6 +61,8 @@ func GetGames(rp map[string]int) []FixtureDetails {
 		rp["leagueId"],
 		rp["season"],
 	)
+
+	log.Info("Request url: %s", url)
 
 	if teamId, ok := rp["teamId"]; ok {
 		url = fmt.Sprintf("%s&team=%d", url, teamId)
