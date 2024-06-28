@@ -62,8 +62,6 @@ func GetGames(rp map[string]int) []FixtureDetails {
 		rp["season"],
 	)
 
-	log.Info("Request url: %s", url)
-
 	if teamId, ok := rp["teamId"]; ok {
 		url = fmt.Sprintf("%s&team=%d", url, teamId)
 	}

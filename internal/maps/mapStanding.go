@@ -1,7 +1,6 @@
 package maps
 
 import (
-	"fmt"
 	"github.com/fmo/football-data/rapidapi"
 )
 
@@ -24,9 +23,7 @@ func MapStanding(rapidStanding rapidapi.StandingsResponse) []responseTeam {
 	var responseTeams []responseTeam
 	for _, league := range rapidStanding.Response {
 		for _, standing := range league.League.Standings {
-			fmt.Println("League: ", league.League.Name)
 			for _, team := range standing {
-				fmt.Println("Team: ", team.Team.Name)
 				responseTeams = append(responseTeams, responseTeam{
 					LeagueId:     league.League.ID,
 					LeagueName:   league.League.Name,
