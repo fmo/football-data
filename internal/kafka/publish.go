@@ -1,4 +1,4 @@
-package main
+package kafka
 
 import (
 	"context"
@@ -11,7 +11,7 @@ import (
 	"os"
 )
 
-func publish(data interface{}, topic string) {
+func Publish(l *log.Logger, data interface{}, topic string) {
 	mechanism, _ := scram.Mechanism(scram.SHA256, os.Getenv("KAFKA_USERNAME"), os.Getenv("KAFKA_PASSWORD"))
 	w := kafka.Writer{
 		Addr:  kafka.TCP(os.Getenv("KAFKA_HOST")),
@@ -26,6 +26,11 @@ func publish(data interface{}, topic string) {
 	if err != nil {
 		log.Fatalf("Error marshalling games to JSON: %v\n", err)
 	}
+
+	l.WithFields(log.Fields{
+		"topic":   topic,
+		"payload": string(payload),
+	}).Debug("Publishing message")
 
 	err = w.WriteMessages(context.Background(), kafka.Message{Value: payload})
 	if err != nil {
