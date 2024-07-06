@@ -4,6 +4,7 @@ import (
 	"github.com/fmo/football-data/internal/kafka"
 	"github.com/fmo/football-data/internal/maps"
 	"github.com/fmo/football-data/rapidapi"
+	pb "github.com/fmo/football-proto/golang/player"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 	"os"
@@ -34,14 +35,14 @@ var Cmd = &cobra.Command{
 	Use:   "players",
 	Short: "Get players",
 	Run: func(cmd *cobra.Command, args []string) {
-		var players []maps.Player
+		var players *[]*pb.Player
 		rapidPlayers := rapidapi.GetPlayers(0, season, teamId)
-		maps.MapPlayers(rapidPlayers.Response, &players)
+		maps.MapPlayers(rapidPlayers.Response, players)
 
 		for page := 1; page <= rapidPlayers.Paging.Total; page++ {
 			result := rapidapi.GetPlayers(page, season, teamId)
 
-			maps.MapPlayers(result.Response, &players)
+			maps.MapPlayers(result.Response, players)
 		}
 
 		kafka.Publish(log, players, os.Getenv("KAFKA_TOPIC_PLAYERS"))

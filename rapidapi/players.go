@@ -26,7 +26,7 @@ type player struct {
 	Name        string `json:"name"`
 	Firstname   string `json:"firstname"`
 	Lastname    string `json:"lastname"`
-	Age         int    `json:"age"`
+	Age         int32  `json:"age"`
 	Nationality string `json:"nationality"`
 	Photo       string `json:"photo"`
 }
@@ -37,13 +37,13 @@ type Statistics struct {
 }
 
 type GameStats struct {
-	Appearances int    `json:"appearances"`
+	Appearances int32  `json:"appearances"`
 	Position    string `json:"position"`
 }
 
 type Team struct {
 	Name string `json:"name"`
-	ID   int    `json:"id"`
+	ID   int32  `json:"id"`
 }
 
 func GetPlayers(page int, season int, teamId int) PlayerResponse {

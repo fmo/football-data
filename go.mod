@@ -1,8 +1,9 @@
 module github.com/fmo/football-data
 
-go 1.19
+go 1.22.5
 
 require (
+	github.com/fmo/football-proto/golang/player v0.0.3
 	github.com/joho/godotenv v1.5.1
 	github.com/segmentio/kafka-go v0.4.47
 	github.com/sirupsen/logrus v1.9.3
@@ -19,4 +20,5 @@ require (
 	github.com/xdg-go/stringprep v1.0.4 // indirect
 	golang.org/x/sys v0.13.0 // indirect
 	golang.org/x/text v0.13.0 // indirect
+	google.golang.org/protobuf v1.34.2 // indirect
 )
