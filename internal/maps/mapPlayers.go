@@ -3,10 +3,32 @@ package maps
 import (
 	"github.com/fmo/football-data/rapidapi"
 	pb "github.com/fmo/football-proto/golang/player"
+	"github.com/sirupsen/logrus"
 	"strconv"
 )
 
-func MapPlayers(players []rapidapi.PlayerDetails, returnPlayer *[]*pb.Player) {
+type MapPlayersObj struct {
+	logger *logrus.Logger
+}
+
+func NewMapPlayers(l *logrus.Logger) MapPlayersObj {
+	return MapPlayersObj{
+		logger: l,
+	}
+}
+
+func (m MapPlayersObj) MapPlayers(players []rapidapi.PlayerDetails, returnPlayer *[]*pb.Player) {
+	if len(players) == 0 {
+		m.logger.Info("No players to map")
+		return
+	}
+
+	m.logger.WithFields(logrus.Fields{
+		"mappedPlayers": len(players),
+		"sourceFile":    "mapPlayers",
+		"function":      "MapPlayers",
+	}).Debug("Number of players will be mapped")
+
 	for _, p := range players {
 		player := &pb.Player{
 			Name:        p.Player.Name,

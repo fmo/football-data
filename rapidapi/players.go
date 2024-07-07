@@ -3,6 +3,7 @@ package rapidapi
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/sirupsen/logrus"
 	"log"
 )
 
@@ -46,7 +47,17 @@ type Team struct {
 	ID   int32  `json:"id"`
 }
 
-func GetPlayers(page int, season int, teamId int) PlayerResponse {
+type RapidApi struct {
+	logger *logrus.Logger
+}
+
+func NewRapidApi(l *logrus.Logger) RapidApi {
+	return RapidApi{
+		logger: l,
+	}
+}
+
+func (r RapidApi) GetPlayers(page int, season int, teamId int) PlayerResponse {
 	url := fmt.Sprintf(
 		"https://api-football-v1.p.rapidapi.com/v3/players?season=%d&team=%d&page=%d",
 		season,
@@ -54,12 +65,35 @@ func GetPlayers(page int, season int, teamId int) PlayerResponse {
 		page,
 	)
 
+	// remove page param from the request if its page 0
+	if page == 0 {
+		url = url[:len(url)-7]
+	}
+
+	r.logger.Debug("request url: ", url)
+
 	response := rapidRequest(url)
 
 	var result PlayerResponse
 	if err := json.Unmarshal(response, &result); err != nil {
 		log.Fatalf("Error unmarshalling json: %v\n", err)
 	}
+
+	// Extracting first three player names
+	playerNames := make([]string, 0, 3)
+	for i, playerDetail := range result.Response {
+		if i >= 3 { // Only interested in the first three players
+			break
+		}
+		playerNames = append(playerNames, playerDetail.Player.Name)
+	}
+
+	r.logger.WithFields(logrus.Fields{
+		"currentPage":     result.Paging.Current,
+		"totalPages":      result.Paging.Total,
+		"playersCount":    len(result.Response),
+		"firstThreeNames": playerNames,
+	}).Debug("Rapid API response summary with player names")
 
 	return result
 }
