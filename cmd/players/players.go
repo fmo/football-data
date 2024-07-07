@@ -52,6 +52,7 @@ var Cmd = &cobra.Command{
 			m.MapPlayers(result.Response, &players)
 		}
 
-		kafka.Publish(log, players, os.Getenv("KAFKA_TOPIC_PLAYERS"))
+		publisher := kafka.NewPublisher(log, os.Getenv("KAFKA_TOPIC_PLAYERS"))
+		publisher.Publish(players)
 	},
 }
