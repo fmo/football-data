@@ -9,3 +9,4 @@ services:
       - ./prometheus/:/etc/prometheus/
     ports:
       - "9090:9090"
+      - "9093:9093"

@@ -70,7 +70,7 @@ func (r RapidApi) GetPlayers(page int, season int, teamId int) PlayerResponse {
 		url = url[:len(url)-7]
 	}
 
-	r.logger.Debug("request url: ", url)
+	r.logger.Info("request url: ", url)
 
 	response := rapidRequest(url)
 
@@ -93,7 +93,7 @@ func (r RapidApi) GetPlayers(page int, season int, teamId int) PlayerResponse {
 		"totalPages":      result.Paging.Total,
 		"playersCount":    len(result.Response),
 		"firstThreeNames": playerNames,
-	}).Debug("Rapid API response summary with player names")
+	}).Info("rapid api response summary with player names")
 
 	return result
 }
