@@ -1,4 +1,4 @@
-package rapidapi
+package apifootball
 
 import (
 	"encoding/json"
@@ -70,7 +70,7 @@ func (r RapidApi) GetPlayers(page int, season int, teamId int) PlayerResponse {
 		url = url[:len(url)-7]
 	}
 
-	r.logger.Info("request url: ", url)
+	r.logger.Debugf("request url: %s", url)
 
 	response := rapidRequest(url)
 

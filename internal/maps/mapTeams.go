@@ -1,7 +1,7 @@
 package maps
 
 import (
-	"github.com/fmo/football-data/internal/rapidapi"
+	"github.com/fmo/football-data/internal/rapidapi/apifootball"
 	"strconv"
 )
 
@@ -11,7 +11,7 @@ type Team struct {
 	Logo string `json:"logo"`
 }
 
-func MapTeams(rapidTeams []rapidapi.TeamsSpecs) []Team {
+func MapTeams(rapidTeams []apifootball.TeamsSpecs) []Team {
 	var teams []Team
 	for _, t := range rapidTeams {
 		teams = append(teams, Team{

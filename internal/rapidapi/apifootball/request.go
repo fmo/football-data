@@ -1,4 +1,4 @@
-package rapidapi
+package apifootball
 
 import (
 	"context"

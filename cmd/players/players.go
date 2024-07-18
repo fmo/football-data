@@ -3,7 +3,7 @@ package players
 import (
 	"github.com/fmo/football-data/internal/kafka"
 	"github.com/fmo/football-data/internal/maps"
-	"github.com/fmo/football-data/internal/rapidapi"
+	"github.com/fmo/football-data/internal/rapidapi/apifootball"
 	pb "github.com/fmo/football-proto/golang/player"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
@@ -36,7 +36,7 @@ var Cmd = &cobra.Command{
 
 		log.Info("starting player command")
 
-		r := rapidapi.NewRapidApi(log)
+		r := apifootball.NewRapidApi(log)
 		rapidPlayers := r.GetPlayers(0, season, teamId)
 
 		m := maps.NewMapPlayers(log)

@@ -1,7 +1,7 @@
 package maps
 
 import (
-	"github.com/fmo/football-data/internal/rapidapi"
+	"github.com/fmo/football-data/internal/rapidapi/apifootball"
 	pb "github.com/fmo/football-proto/golang/player"
 	"github.com/sirupsen/logrus"
 	"strconv"
@@ -17,7 +17,7 @@ func NewMapPlayers(l *logrus.Logger) MapPlayersObj {
 	}
 }
 
-func (m MapPlayersObj) MapPlayers(players []rapidapi.PlayerDetails, returnPlayer *[]*pb.Player) {
+func (m MapPlayersObj) MapPlayers(players []apifootball.PlayerDetails, returnPlayer *[]*pb.Player) {
 	if len(players) == 0 {
 		m.logger.Info("No players to map")
 		return

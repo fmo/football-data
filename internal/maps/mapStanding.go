@@ -1,7 +1,7 @@
 package maps
 
 import (
-	"github.com/fmo/football-data/internal/rapidapi"
+	"github.com/fmo/football-data/internal/rapidapi/apifootball"
 )
 
 type responseTeam struct {
@@ -19,7 +19,7 @@ type responseTeam struct {
 	GoalsAgainst int    `json:"goalsAgainst"`
 }
 
-func MapStanding(rapidStanding rapidapi.StandingsResponse) []responseTeam {
+func MapStanding(rapidStanding apifootball.StandingsResponse) []responseTeam {
 	var responseTeams []responseTeam
 	for _, league := range rapidStanding.Response {
 		for _, standing := range league.League.Standings {

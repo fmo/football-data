@@ -1,7 +1,7 @@
 package maps
 
 import (
-	"github.com/fmo/football-data/internal/rapidapi"
+	"github.com/fmo/football-data/internal/rapidapi/apifootball"
 	log "github.com/sirupsen/logrus"
 	"strconv"
 )
@@ -23,7 +23,7 @@ type Game struct {
 	AwayTeamLogo string `json:"awayTeamLogo"`
 }
 
-func MapGames(fixtures []rapidapi.FixtureDetails) []Game {
+func MapGames(fixtures []apifootball.FixtureDetails) []Game {
 	var games []Game
 
 	for _, fixture := range fixtures {

@@ -3,7 +3,7 @@ package standings
 import (
 	"fmt"
 	"github.com/fmo/football-data/internal/maps"
-	"github.com/fmo/football-data/internal/rapidapi"
+	"github.com/fmo/football-data/internal/rapidapi/apifootball"
 	"github.com/spf13/cobra"
 )
 
@@ -14,7 +14,7 @@ var Cmd = &cobra.Command{
 	Use:   "standings",
 	Short: "Get standings",
 	Run: func(cmd *cobra.Command, args []string) {
-		rapidStanding := rapidapi.GetStanding(leagueId, season)
+		rapidStanding := apifootball.GetStanding(leagueId, season)
 		standing := maps.MapStanding(rapidStanding)
 		for _, s := range standing {
 			fmt.Println(s.Name)

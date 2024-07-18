@@ -3,7 +3,7 @@ package teams
 import (
 	"fmt"
 	"github.com/fmo/football-data/internal/maps"
-	"github.com/fmo/football-data/internal/rapidapi"
+	"github.com/fmo/football-data/internal/rapidapi/apifootball"
 	"github.com/spf13/cobra"
 )
 
@@ -14,7 +14,7 @@ var Cmd = &cobra.Command{
 	Use:   "teams",
 	Short: "Get teams",
 	Run: func(cmd *cobra.Command, args []string) {
-		rapidTeams := rapidapi.GetTeams(leagueId, teamId)
+		rapidTeams := apifootball.GetTeams(leagueId, teamId)
 		teams := maps.MapTeams(rapidTeams)
 		for _, team := range teams {
 			fmt.Println(team.Id, team.Name)
