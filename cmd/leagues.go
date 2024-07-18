@@ -2,7 +2,7 @@ package cmd
 
 import (
 	"fmt"
-	"github.com/fmo/football-data/rapidapi"
+	"github.com/fmo/football-data/internal/rapidapi"
 	"github.com/spf13/cobra"
 )
 

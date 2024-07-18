@@ -3,7 +3,7 @@ package players
 import (
 	"github.com/fmo/football-data/internal/kafka"
 	"github.com/fmo/football-data/internal/maps"
-	"github.com/fmo/football-data/rapidapi"
+	"github.com/fmo/football-data/internal/rapidapi"
 	pb "github.com/fmo/football-proto/golang/player"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
