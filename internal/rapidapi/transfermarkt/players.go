@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/fmo/football-data/internal/rapidapi"
+	"github.com/sirupsen/logrus"
 	"log"
 )
 
@@ -62,7 +63,17 @@ type Data struct {
 	Players []Player `json:"data"`
 }
 
-func GetPlayers() []byte {
+type PlayersApi struct {
+	logger *logrus.Logger
+}
+
+func NewPlayersApi(l *logrus.Logger) PlayersApi {
+	return PlayersApi{
+		logger: l,
+	}
+}
+
+func (p PlayersApi) GetPlayers() []Player {
 	url := fmt.Sprintf("https://transfermarkt-db.p.rapidapi.com/v1/clubs/squad?season_id=%d&locale=UK&club_id=%d",
 		2024,
 		12321,
@@ -75,8 +86,17 @@ func GetPlayers() []byte {
 		log.Fatalf("error unmarshalling json: %v\n", err)
 	}
 
-	for _, p := range playerResponse.Players {
-		fmt.Println(p.Name)
+	playerNames := make([]string, 0, 3)
+	for i, p := range playerResponse.Players {
+		if i >= 3 {
+			break
+		}
+		playerNames = append(playerNames, p.Name)
 	}
-	return nil
+
+	p.logger.WithFields(logrus.Fields{
+		"firstThreeNames": playerNames,
+	}).Info("rapid api response summary with player names")
+
+	return playerResponse.Players
 }

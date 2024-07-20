@@ -31,6 +31,8 @@ var Cmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		log.Info("starting player command")
 
-		transfermarkt.GetPlayers()
+		r := transfermarkt.NewPlayersApi(log)
+		_ = r.GetPlayers()
+
 	},
 }
