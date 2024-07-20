@@ -3,6 +3,7 @@ package apifootball
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/fmo/football-data/internal/rapidapi"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -66,7 +67,7 @@ func GetGames(rp map[string]int) []FixtureDetails {
 		url = fmt.Sprintf("%s&team=%d", url, teamId)
 	}
 
-	response := rapidRequest(url)
+	response := rapidapi.RapidRequest(url)
 
 	var result FixtureResponse
 	if err := json.Unmarshal(response, &result); err != nil {

@@ -3,6 +3,7 @@ package apifootball
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/fmo/football-data/internal/rapidapi"
 	"log"
 )
 
@@ -23,7 +24,7 @@ type team struct {
 func GetTeams(leagueId int, season int) []TeamsSpecs {
 	url := fmt.Sprintf("https://api-football-v1.p.rapidapi.com/v3/teams?league=%d&season=%d", leagueId, season)
 
-	response := rapidRequest(url)
+	response := rapidapi.RapidRequest(url)
 
 	var result TeamsResponse
 	err := json.Unmarshal(response, &result)

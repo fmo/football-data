@@ -1,4 +1,4 @@
-package apifootball
+package rapidapi
 
 import (
 	"context"
@@ -9,7 +9,7 @@ import (
 	"time"
 )
 
-func rapidRequest(url string) []byte {
+func RapidRequest(url string) []byte {
 	ctx, cancel := context.WithTimeout(context.Background(), 1*time.Second)
 	defer cancel()
 
@@ -19,7 +19,6 @@ func rapidRequest(url string) []byte {
 	}
 
 	req.Header.Add("X-RapidAPI-Key", os.Getenv("RAPID_API_KEY"))
-	req.Header.Add("X-RapidAPI-Host", "api-football-v1.p.rapidapi.com")
 
 	res, err := http.DefaultClient.Do(req)
 	if err != nil {

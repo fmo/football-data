@@ -3,6 +3,7 @@ package apifootball
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/fmo/football-data/internal/rapidapi"
 	"github.com/sirupsen/logrus"
 	"log"
 )
@@ -72,7 +73,7 @@ func (r RapidApi) GetPlayers(page int, season int, teamId int) PlayerResponse {
 
 	r.logger.Debugf("request url: %s", url)
 
-	response := rapidRequest(url)
+	response := rapidapi.RapidRequest(url)
 
 	var result PlayerResponse
 	if err := json.Unmarshal(response, &result); err != nil {

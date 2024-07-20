@@ -1,4 +1,4 @@
-package players
+package apifootball
 
 import (
 	"github.com/fmo/football-data/internal/kafka"
