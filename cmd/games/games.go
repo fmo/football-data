@@ -1,7 +1,7 @@
 package games
 
 import (
-	"github.com/fmo/football-data/internal/maps"
+	apifootballmap "github.com/fmo/football-data/internal/maps/apifootball"
 	"github.com/fmo/football-data/internal/rapidapi/apifootball"
 	"github.com/spf13/cobra"
 )
@@ -19,7 +19,7 @@ var Cmd = &cobra.Command{
 		requestParams["teamId"] = teamId
 		requestParams["season"] = season
 		rapidApiGames := apifootball.GetGames(requestParams)
-		maps.MapGames(rapidApiGames)
+		apifootballmap.MapGames(rapidApiGames)
 		//publish(mappedGames, os.Getenv("KAFKA_TOPIC_FIXTURE"))
 	},
 }

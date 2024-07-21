@@ -1,7 +1,10 @@
 package transfermarkt
 
 import (
+	"fmt"
+	transfermarktmap "github.com/fmo/football-data/internal/maps/transfermarkt"
 	"github.com/fmo/football-data/internal/rapidapi/transfermarkt"
+	pb "github.com/fmo/football-proto/golang/player"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 	"os"
@@ -29,10 +32,16 @@ var Cmd = &cobra.Command{
 	Use:   "players-tm",
 	Short: "Get players from Transfermarkt",
 	Run: func(cmd *cobra.Command, args []string) {
+		var players []*pb.Player
+
 		log.Info("starting player command")
 
 		r := transfermarkt.NewPlayersApi(log)
-		_ = r.GetPlayers()
+		rapidPlayers := r.GetPlayers()
 
+		m := transfermarktmap.NewMapPlayers(log)
+		m.MapPlayers(rapidPlayers, &players)
+
+		fmt.Println(players)
 	},
 }

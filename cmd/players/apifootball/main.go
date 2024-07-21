@@ -2,7 +2,7 @@ package apifootball
 
 import (
 	"github.com/fmo/football-data/internal/kafka"
-	"github.com/fmo/football-data/internal/maps"
+	apifootballmap "github.com/fmo/football-data/internal/maps/apifootball"
 	"github.com/fmo/football-data/internal/rapidapi/apifootball"
 	pb "github.com/fmo/football-proto/golang/player"
 	"github.com/sirupsen/logrus"
@@ -39,7 +39,7 @@ var Cmd = &cobra.Command{
 		r := apifootball.NewRapidApi(log)
 		rapidPlayers := r.GetPlayers(0, season, teamId)
 
-		m := maps.NewMapPlayers(log)
+		m := apifootballmap.NewMapPlayers(log)
 		m.MapPlayers(rapidPlayers.Response, &players)
 
 		log.WithFields(logrus.Fields{
