@@ -2,8 +2,12 @@ github.com/cpuguy83/go-md2man/v2 v2.0.4/go.mod h1:tgQtvFlXSQOSOSIRvRPT7W67SCa46t
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
-github.com/fmo/football-proto/golang/player v0.0.3 h1:TUJZqt9HD1460C8JCRgZAvS6OVypHHHemlTvDD9U4E8=
-github.com/fmo/football-proto/golang/player v0.0.3/go.mod h1:cE2PKm2XFUZphjAV86TEjUvPRSg9joDMLuTx+pUZCUc=
+github.com/fmo/football-proto/golang/player v0.0.4 h1:LAEevDKtuiBx1IvzORg1XXSFnROsNHjXzq7+7MwnRAQ=
+github.com/fmo/football-proto/golang/player v0.0.4/go.mod h1:cE2PKm2XFUZphjAV86TEjUvPRSg9joDMLuTx+pUZCUc=
+github.com/fmo/football-proto/golang/player v0.0.5 h1:zENF8FTbZ9Sw+tfcQYFhu2MfT8f27GPCR9N49OqReb8=
+github.com/fmo/football-proto/golang/player v0.0.5/go.mod h1:cE2PKm2XFUZphjAV86TEjUvPRSg9joDMLuTx+pUZCUc=
+github.com/fmo/football-proto/golang/player v0.0.6 h1:QzUebUZlX4IUOeSUfZVTDzp1DxIoaVA0YsJfMGQdPWQ=
+github.com/fmo/football-proto/golang/player v0.0.6/go.mod h1:cE2PKm2XFUZphjAV86TEjUvPRSg9joDMLuTx+pUZCUc=
 github.com/google/go-cmp v0.5.5 h1:Khx7svrCpmxxtHBq5j2mp/xVjsi8hQMfNLvJFAlrGgU=
 github.com/google/go-cmp v0.5.5/go.mod h1:v8dTdLbMG2kIc/vJvl+f65V22dbkXbowE6jgT/gNBxE=
 github.com/inconshreveable/mousetrap v1.1.0 h1:wN+x4NVGpMsO7ErUn/mUI3vEoE6Jt13X2s0bqwp9tc8=

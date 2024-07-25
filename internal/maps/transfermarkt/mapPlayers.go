@@ -30,7 +30,8 @@ func (m MapPlayersObj) MapPlayers(players []transfermarkt.Player, returnPlayer *
 
 	for _, p := range players {
 		player := &pb.Player{
-			Name: p.Name,
+			Name:            p.Name,
+			TransfermarktId: p.ID,
 		}
 
 		*returnPlayer = append(*returnPlayer, player)
