@@ -14,7 +14,7 @@ type Player struct {
 	Injury        interface{}   `json:"injury"`
 	Suspension    interface{}   `json:"suspension"`
 	Joined        int64         `json:"joined"`
-	ContractUntil int64         `json:"contractUntil"`
+	ContractUntil interface{}   `json:"contractUntil"`
 	Captain       bool          `json:"captain"`
 	LastClub      interface{}   `json:"lastClub"`
 	IsLoan        interface{}   `json:"isLoan"`
@@ -24,7 +24,7 @@ type Player struct {
 	Image         string        `json:"image"`
 	ImageLarge    interface{}   `json:"imageLarge"`
 	ImageSource   string        `json:"imageSource"`
-	ShirtNumber   interface{}   `json:"shirtNumber"`
+	ShirtNumber   string        `json:"shirtNumber"`
 	Age           int           `json:"age"`
 	DateOfBirth   int64         `json:"dateOfBirth"`
 	HeroImage     string        `json:"heroImage"`
@@ -73,10 +73,10 @@ func NewPlayersApi(l *logrus.Logger) PlayersApi {
 	}
 }
 
-func (p PlayersApi) GetPlayers() []Player {
+func (p PlayersApi) GetPlayers(season, teamId int) []Player {
 	url := fmt.Sprintf("https://transfermarkt-db.p.rapidapi.com/v1/clubs/squad?season_id=%d&locale=UK&club_id=%d",
-		2024,
-		12321,
+		season,
+		teamId,
 	)
 
 	response := rapidapi.RapidRequest(url)

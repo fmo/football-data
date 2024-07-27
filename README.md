@@ -70,3 +70,21 @@ To run the application, first ensure that all environment variables are set, the
 | Turkiye     | 777 |
 | Germany     | 25  |
 | England     | 10  |
+
+## Run Transfermarkt
+
+To run the application, first ensure that all environment variables are set, then execute the binary:
+
+```
+./footballDataApp players-tm --season 2024 --teamId 36
+```
+
+## Teams
+
+| Team        | Id |
+|-------------|----|
+| Real Madrid |    |
+| Fenerbahce  | 36 |
+| Turkiye     |    |
+| Germany     |    |
+| England     |    |

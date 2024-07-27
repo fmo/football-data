@@ -1,7 +1,7 @@
 package transfermarkt
 
 import (
-	"fmt"
+	"github.com/fmo/football-data/internal/kafka"
 	transfermarktmap "github.com/fmo/football-data/internal/maps/transfermarkt"
 	"github.com/fmo/football-data/internal/rapidapi/transfermarkt"
 	pb "github.com/fmo/football-proto/golang/player"
@@ -37,11 +37,12 @@ var Cmd = &cobra.Command{
 		log.Info("starting player command")
 
 		r := transfermarkt.NewPlayersApi(log)
-		rapidPlayers := r.GetPlayers()
+		rapidPlayers := r.GetPlayers(season, teamId)
 
 		m := transfermarktmap.NewMapPlayers(log)
 		m.MapPlayers(rapidPlayers, &players)
 
-		fmt.Println(players)
+		publisher := kafka.NewPublisher(log, os.Getenv("KAFKA_TOPIC_PLAYERS"))
+		publisher.Publish(players)
 	},
 }
