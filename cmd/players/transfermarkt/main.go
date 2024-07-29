@@ -40,7 +40,7 @@ var Cmd = &cobra.Command{
 		rapidPlayers := r.GetPlayers(season, teamId)
 
 		m := transfermarktmap.NewMapPlayers(log)
-		m.MapPlayers(rapidPlayers, &players)
+		m.MapPlayers(rapidPlayers, &players, teamId)
 
 		publisher := kafka.NewPublisher(log, os.Getenv("KAFKA_TOPIC_PLAYERS"))
 		publisher.Publish(players)

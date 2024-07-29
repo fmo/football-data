@@ -16,7 +16,7 @@ func NewMapPlayers(l *logrus.Logger) MapPlayersObj {
 	}
 }
 
-func (m MapPlayersObj) MapPlayers(players []transfermarkt.Player, returnPlayer *[]*pb.Player) {
+func (m MapPlayersObj) MapPlayers(players []transfermarkt.Player, returnPlayer *[]*pb.Player, teamId int) {
 	if len(players) == 0 {
 		m.logger.Info("No players to map")
 		return
@@ -35,6 +35,7 @@ func (m MapPlayersObj) MapPlayers(players []transfermarkt.Player, returnPlayer *
 			ShirtNumber:         p.ShirtNumber,
 			MarketValue:         int32(p.MarketValue.Value),
 			MarketValueCurrency: p.MarketValue.Currency,
+			TeamId:              int32(teamId),
 		}
 
 		*returnPlayer = append(*returnPlayer, player)
