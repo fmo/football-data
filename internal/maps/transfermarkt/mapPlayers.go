@@ -36,6 +36,7 @@ func (m MapPlayersObj) MapPlayers(players []transfermarkt.Player, returnPlayer *
 			MarketValue:         int32(p.MarketValue.Value),
 			MarketValueCurrency: p.MarketValue.Currency,
 			TeamId:              int32(teamId),
+			Position:            p.Positions.First.Name,
 		}
 
 		*returnPlayer = append(*returnPlayer, player)
