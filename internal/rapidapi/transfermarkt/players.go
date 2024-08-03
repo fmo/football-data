@@ -13,7 +13,7 @@ type Player struct {
 	Foot          string        `json:"foot"`
 	Injury        interface{}   `json:"injury"`
 	Suspension    interface{}   `json:"suspension"`
-	Joined        int64         `json:"joined"`
+	Joined        interface{}   `json:"joined"`
 	ContractUntil interface{}   `json:"contractUntil"`
 	Captain       bool          `json:"captain"`
 	LastClub      interface{}   `json:"lastClub"`

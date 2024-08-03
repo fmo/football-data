@@ -81,10 +81,12 @@ To run the application, first ensure that all environment variables are set, the
 
 ## Teams
 
-| Team        | Id |
-|-------------|----|
-| Real Madrid |    |
-| Fenerbahce  | 36 |
-| Turkiye     |    |
-| Germany     |    |
-| England     |    |
+| Team            | Id  |
+|-----------------|-----|
+| Real Madrid     | 418 |
+| Barcelona       | 131 |
+| Atletico Madrid | 13  |
+| Fenerbahce      | 36  |
+| Turkiye         |     |
+| Germany         |     |
+| England         |     |
